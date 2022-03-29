@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use App\Models\Offer;
 use Illuminate\Database\Seeder;
 
-class OffersSeeder extends Seeder
+class CorruptedOffersSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,7 +14,7 @@ class OffersSeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 0; $i < 5; $i++) {
+            //insert two corrubted and one not corrubted
             Offer::create([
                 "title" => "AssisiOAssisifAssisifAssisirAssisiiAssisi AssisisAssisieAssisirAssisivAssisiiAssisizAssisiiAssisi AssisidAssisiiAssisi AssisitAssisirAssisiaAssisisAssisilAssisioAssisicAssisioAssisi AssisiaAssisi AssisiCAssisieAssisirAssisiiAssisigAssisinAssisioAssisilAssisiaAssisi AssisicAssisioAssisinAssisi AssisiEAssisirAssisinAssisieAssisisAssisitAssisioAssisi",
                 "description" => "FormigineGFormigineoFormigineoFormigined FormiginejFormigineoFormiginebFormigine"
@@ -27,6 +27,5 @@ class OffersSeeder extends Seeder
                 "title" => "FormigineGFormigineoFormigineoFormigined FormiginejFormigineoFormiginebFormigine.",
                 "description" => "FormigineGFormigineoFormigineoFormigined FormiginejFormigineoFormiginebFormigine"
             ]);
-        }
     }
 }
