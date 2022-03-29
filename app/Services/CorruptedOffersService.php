@@ -2,7 +2,9 @@
 
 namespace App\Services;
 
-class RecoverStringService
+use Illuminate\Support\Facades\DB;
+
+class CorruptedOffersService
 {
     protected $cities = ["Assisi", "Corsico", "Formigine"];
     public function getRecoveredString($corrubtedString)
@@ -23,5 +25,17 @@ class RecoverStringService
 
     public function getCitesTobeRemoved(){
         return $this->cities;
+    }
+
+    public function getCorruptedOffers(){
+        $offers = DB::table('offers');
+        foreach ($this->getCitesTobeRemoved() as $index => $city) {
+            if ($index == 0) {
+                $offers->where('title', 'LIKE', "{$city}%")->orWhere('description', 'LIKE', "{$city}%");
+                continue;
+            }
+            $offers->orWhere('title', 'LIKE', "{$city}%")->orWhere('description', 'LIKE', "{$city}%");
+        }
+        return $offers;
     }
 }
