@@ -38,4 +38,19 @@ class CorruptedOffersService
         }
         return $offers;
     }
+
+    public function recoverCorruptedStrings(){
+        $this->getCorruptedOffers()->chunkById(10, function ($offers) {
+            foreach ($offers as $offer) {
+                $title = $this->getRecoveredString($offer->title);
+                $description = $this->getRecoveredString($offer->description);
+                if ($title != $offer->title || $description != $offer->description) {
+                    DB::table('offers')->where('id', $offer->id)->update([
+                        "title" => $title,
+                        "description" => $description
+                    ]);
+                }
+            }
+        });
+    }
 }
