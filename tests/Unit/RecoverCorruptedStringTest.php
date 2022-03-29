@@ -2,7 +2,7 @@
 
 namespace Tests\Unit;
 
-use App\Services\RecoverStringService;
+use App\Services\CorruptedOffersService;
 use PHPUnit\Framework\TestCase;
 
 class RecoverCorruptedStringTest extends TestCase
@@ -14,7 +14,7 @@ class RecoverCorruptedStringTest extends TestCase
      */
     public function test_recover_corrupted_string()
     {
-        $recoverStringService = new RecoverStringService();
+        $recoverStringService = new CorruptedOffersService();
         $corrubtedString = 'CorsicoSCorsicoeCorsico CorsicotCorsicoiCorsico CorsicooCorsicocCorsicocCorsicouCorsicopCorsicoiCorsico CorsicodCorsicoiCorsico CorsicosCorsicoeCorsicorCorsicovCorsicoiCorsicozCorsicoiCorsico CorsicodCorsicoiCorsico CorsicotCorsicorCorsicoaCorsicosCorsicolCorsicooCorsicocCorsicooCorsico CorsicoaCorsico CorsicoCCorsicoeCorsicorCorsicoiCorsicogCorsiconCorsicooCorsicolCorsicoaCorsico CorsicopCorsicorCorsicooCorsicovCorsicoaCorsico CorsicoECorsicorCorsiconCorsicoeCorsicosCorsicotCorsicooCorsico';
         $expectedString = 'Se ti occupi di servizi di trasloco a Cerignola prova Ernesto';
         $this->assertEquals($recoverStringService->getRecoveredString($corrubtedString),$expectedString);
